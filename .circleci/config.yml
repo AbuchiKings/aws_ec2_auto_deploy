@@ -11,6 +11,10 @@ jobs:
           MYSQL_DATABASE: lend
           MYSQL_USER: abuchikings
           MYSQL_PASSWORD: 12345
+        command: |
+          echo ${DB_NAME}
+          echo ${DB_PASS}
+          echo ${DB_USER}
     steps:
       - checkout
       - restore_cache:
