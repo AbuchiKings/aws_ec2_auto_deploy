@@ -515,6 +515,7 @@ describe('Routes', () => {
                 request.post(endpoint))
                 .set('Authorization', `Bearer ${token}`)
                 .send({ amount: 10, recipientEmail: 'shegz@myemail.com' });
+            console.log(response.body);
             expect(response.status).toBe(200);
             expect(response.body).toHaveProperty('data');
             expect(response.body.data).toHaveProperty('balance');
