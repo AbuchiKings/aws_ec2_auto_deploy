@@ -20,7 +20,6 @@ jobs:
           command: |
             pwd
             ls
-            cd aws_ec2_auto_deploy
             npm install
             npm run migrate:latest
 
