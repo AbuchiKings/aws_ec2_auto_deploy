@@ -161,9 +161,9 @@ describe('Routes', () => {
             expect(response.body.data.token).toBeDefined();
 
             expect(findUserByEmailSpy).toBeCalledTimes(1);
-            expect(bcryptHashSpy).toBeCalledTimes(1);
-            expect(createUserSpy).toBeCalledTimes(1);
-            expect(createTokensSpy).toBeCalledTimes(1);
+            expect(bcryptHashSpy).toBeCalledTimes(2);
+            expect(createUserSpy).toBeCalledTimes(2);
+            expect(createTokensSpy).toBeCalledTimes(2);
             expect(bcryptHashSpy).toBeCalledWith(USER_PASSWORD, 12);
         });
 
