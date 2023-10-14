@@ -37,6 +37,7 @@ const request = supertest(App);
 let obj = { userId: 0 }
 async function clearData() {
     await db('user').where('id', obj.userId).del()
+    await db('user').where('email', 'shegz@myemail.com').del()
 }
 
 describe('Auth getAccessToken function', () => {
@@ -142,11 +143,6 @@ describe('Routes', () => {
                     email: USER_EMAIL,
                     firstname: firstname,
                     password: USER_PASSWORD,
-                })),
-                addHeaders(request.post(endpoint).send({
-                    email: 'shegz@myemail.com',
-                    firstname: firstname,
-                    password: USER_PASSWORD,
                 }))
             ]);
             obj.userId = response.body?.data?.id
@@ -161,10 +157,21 @@ describe('Routes', () => {
             expect(response.body.data.token).toBeDefined();
 
             expect(findUserByEmailSpy).toBeCalledTimes(1);
-            expect(bcryptHashSpy).toBeCalledTimes(2);
-            expect(createUserSpy).toBeCalledTimes(2);
-            expect(createTokensSpy).toBeCalledTimes(2);
+            expect(bcryptHashSpy).toBeCalledTimes(1);
+            expect(createUserSpy).toBeCalledTimes(1);
+            expect(createTokensSpy).toBeCalledTimes(1);
             expect(bcryptHashSpy).toBeCalledWith(USER_PASSWORD, 12);
+        });
+
+        it('Should register recipient successfully', async () => {
+            const response = await addHeaders(request.post(endpoint).send({
+                email: 'shegz@myemail.com',
+                firstname: firstname,
+                password: USER_PASSWORD,
+            }));
+
+            obj.userId = response.body?.data?.id
+            expect(response.status).toBe(200);
         });
 
         it('Should send conflict error for existing emails', async () => {
