@@ -137,13 +137,18 @@ describe('Routes', () => {
 
 
         it('Should send success response for correct data', async () => {
-            const response = await addHeaders(
-                request.post(endpoint).send({
+            const [response] = await Promise.all([
+                addHeaders(request.post(endpoint).send({
                     email: USER_EMAIL,
                     firstname: firstname,
                     password: USER_PASSWORD,
-                }),
-            );
+                })),
+                addHeaders(request.post(endpoint).send({
+                    email: 'shegz@myemail.com',
+                    firstname: firstname,
+                    password: USER_PASSWORD,
+                }))
+            ]);
             obj.userId = response.body?.data?.id
             expect(response.status).toBe(200);
             expect(response.body.message).toMatch(/successfully/i);
@@ -468,7 +473,7 @@ describe('Routes', () => {
             const response = await addHeaders(
                 request.post(endpoint))
                 .set('Authorization', `Bearer ${token}`)
-                .send({amount: 10, recipientEmail: USER_EMAIL});
+                .send({ amount: 10, recipientEmail: USER_EMAIL });
             expect(response.status).toBe(409);
             expect(response.body.message).toMatch(/transfer/i);
             expect(response.body.message).toMatch(/self/);
