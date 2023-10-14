@@ -30,9 +30,10 @@ jobs:
           name: Run tests
           command: |
             pwd
+            nc -z 127.0.0.1 6379 && echo Success
+            nc -z redis 6379 && echo redisconn
+            nc -z 0.0.0.0 6379 && echo zeroes
             mv .env.example .env
-            ls -a
-            cat .env
             npm install
             npm run migrate:latest
             npm run test
