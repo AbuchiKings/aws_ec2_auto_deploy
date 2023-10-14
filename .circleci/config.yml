@@ -5,7 +5,7 @@ jobs:
     docker:
       - image: cimg/node:16.17.0
       - image: cimg/redis:6.2.6
-      - image: cimg/mysql:8.0
+      - image: mysql:8.0
         environment:
           MYSQL_ROOT_PASSWORD: ${DB_PASS}
           MYSQL_DATABASE: ${DB_NAME}
