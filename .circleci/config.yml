@@ -1,1 +1,27 @@
-version: 2.1        
+version: 2.1
+
+jobs:
+  test:
+    docker:
+      - image: cimg/node:16.17.0
+      - image: cimg/redis
+      - image: cimg/mysql:8.0
+        environment:
+          MYSQL_ROOT_PASSWORD: ${DB_PASS}
+          MYSQL_DATABASE: ${DB_NAME}
+          MYSQL_USER: ${DB_USER}
+          MYSQL_PASSWORD: ${DB_PASS}
+    steps:
+      - checkout
+      - restore_cache:
+          keys: [packages]
+      - run:
+          name: Run tests
+          command: |
+            pwd
+
+
+workflows:
+  default:
+    jobs:
+      - test
