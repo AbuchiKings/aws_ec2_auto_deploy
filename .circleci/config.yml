@@ -4,7 +4,7 @@ jobs:
   test:
     docker:
       - image: cimg/node:16.17.0
-      - image: cimg/redis:6.2.6
+      - image: redis
       - image: mysql:8.0
         environment:
           MYSQL_ROOT_PASSWORD: 12345
