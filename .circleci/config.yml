@@ -9,7 +9,7 @@ jobs:
         environment:
           MYSQL_ROOT_PASSWORD: ${DB_PASS}
           MYSQL_DATABASE: ${DB_NAME}
-          MYSQL_USER: ${DB_USER}
+          MYSQL_USER: abuchikings
           MYSQL_PASSWORD: ${DB_PASS}
     steps:
       - checkout
@@ -32,6 +32,7 @@ jobs:
             pwd
             mv .env.example .env
             ls -a
+            cat .env
             npm install
             npm run migrate:latest
 
