@@ -30,20 +30,19 @@ jobs:
       - run:
           name: Run tests
           command: |
-            echo NODE_ENV= > .env
-            echo DB_TYPE=$DB_TYPE >> backend/.env
-            echo DB_PORT=$DB_PORT >> .env
-            echo DB_USER=$DB_USER >> .env
-            echo DB_PASS=$DB_PASS >> .env
-            echo DB_NAME=$DB_NAME >> .env
-            echo DB_HOST=$DB_HOST >> .env
+            # echo NODE_ENV= > .env
+            # echo DB_TYPE=$DB_TYPE >> backend/.env
+            # echo DB_PORT=$DB_PORT >> .env
+            # echo DB_USER=$DB_USER >> .env
+            # echo DB_PASS=$DB_PASS >> .env
+            # echo DB_NAME=$DB_NAME >> .env
+            # echo DB_HOST=$DB_HOST >> .env
 
             # mv .env.example .env
-            cat .env
             npm install
             npm run migrate:latest
             npm run test
-            
+
       - save_cache:
           paths:
             - "./node_modules"
