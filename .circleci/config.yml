@@ -16,6 +16,17 @@ jobs:
       - restore_cache:
           keys: [packages]
       - run:
+          name: Test MYSQL connection
+          command: |
+            for i in `seq 1 30`;
+            do
+              nc -z 127.0.0.1 3306 && echo Success && exit 0
+              echo -n .
+              sleep 1
+            done
+            echo Failed waiting for MySQL && exit 1
+
+      - run:
           name: Run tests
           command: |
             pwd
