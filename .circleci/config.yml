@@ -19,11 +19,10 @@ jobs:
           name: Run tests
           command: |
             pwd
-            ls
-            npm install
             mv .env.example .env
+            ls -a
+            npm install
             npm run migrate:latest
-
 
 workflows:
   default:
