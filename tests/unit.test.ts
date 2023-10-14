@@ -374,7 +374,7 @@ describe('Routes', () => {
             const response = await addHeaders(
                 request.post(endpoint))
                 .set('Authorization', `Bearer ${token}`)
-                .send({ amount: 10 });
+                .send({ amount: 100 });
             expect(response.status).toBe(200);
         });
     });
