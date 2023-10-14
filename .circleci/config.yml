@@ -30,15 +30,7 @@ jobs:
       - run:
           name: Run tests
           command: |
-            # echo NODE_ENV= > .env
-            # echo DB_TYPE=$DB_TYPE >> backend/.env
-            # echo DB_PORT=$DB_PORT >> .env
-            # echo DB_USER=$DB_USER >> .env
-            # echo DB_PASS=$DB_PASS >> .env
-            # echo DB_NAME=$DB_NAME >> .env
-            # echo DB_HOST=$DB_HOST >> .env
 
-            # mv .env.example .env
             npm install
             npm run migrate:latest
             npm run test
@@ -47,6 +39,25 @@ jobs:
           paths:
             - "./node_modules"
           key: packages
+
+  setup-ansible:
+    docker:
+      - image: amazon/aws-cli
+    steps:
+      - checkout
+      - run:
+          name: Add Backend IP To Ansible
+          command: |
+            backend_ip=$(aws ec2 describe-instances \
+            --query "Reservations[*].Instances[*].PublicIpAddress" \
+            --filters "Name=tag:Name,Values=ec2_auto_deploy_test" \
+            --output text)
+            echo "$backend_ip" >> ~/project/.circleci/ansible/inventory.txt
+            cat ~/project/.circleci/ansible/inventory.txt
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - project/.circleci/ansible/inventory.txt
 
 workflows:
   default:
