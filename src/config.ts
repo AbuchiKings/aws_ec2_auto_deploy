@@ -17,7 +17,7 @@ const env = cleanEnv(process.env, {
   DB_NAME: str(),
   DB_HOST: str(),
   REDIS_URL: str(),
-  WHITELIST: str(),
+  WHITELIST: str({ default: '' }),
 });
 
 export default env;

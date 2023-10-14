@@ -19,6 +19,9 @@ jobs:
           name: Run tests
           command: |
             pwd
+            cd aws_ec2_auto_deploy
+            npm install
+            npm run migrate:latest
 
 
 workflows:

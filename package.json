@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest --setupFiles dotenv/config --forceExit --coverage=true --verbose",
     "knex:init": "knex init -x ts",
-    "knex:run": "knex --knexfile src/db/knexfile.ts",
+    "knex:run": "npx knex --knexfile src/db/knexfile.ts",
     "migrate:currentVersion": "npm run knex:run -- migrate:currentVersion",
     "migrate:list": "npm run knex:run -- migrate:list",
     "migrate:make": "npm run knex:run -- migrate:make --",
