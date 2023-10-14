@@ -31,8 +31,9 @@ jobs:
           command: |
             pwd
             nc -z 127.0.0.1 6379 && echo Success
-            nc -z redis 6379 && echo redisconn
+            nc -z localhost 6379 && echo localhost
             nc -z 0.0.0.0 6379 && echo zeroes
+            echo ${REDIS_URL}
             mv .env.example .env
             npm install
             npm run migrate:latest
