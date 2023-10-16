@@ -46,6 +46,10 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Install dependencies
+          command: |
+            yum install -y tar
+      - run:
           name: Add Backend IP To Ansible
           command: |
             backend_ip=$(aws ec2 describe-instances \
