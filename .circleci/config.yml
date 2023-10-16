@@ -40,7 +40,7 @@ jobs:
             - "./node_modules"
           key: packages
 
-  setup-ansible:
+  setup_ansible:
     docker:
       - image: amazon/aws-cli
     steps:
@@ -63,3 +63,5 @@ workflows:
   default:
     jobs:
       - test
+      - setup_ansible:
+          requires: [test]
