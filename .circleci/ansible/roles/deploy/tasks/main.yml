@@ -1,1 +1,23 @@
 ---
+- name: Ensure SSH agent is available
+  shell: |
+    eval $(ssh-agent)
+  become: false
+  delegate_to: localhost
+
+- name: Perform Git Pull
+  become: false
+  git:
+    repo: git@github.com:AbuchiKings/aws_ec2_auto_deploy.git # Replace with github repo you prefer
+    dest: ~/apps/aws_ec2_auto_deploy
+    accept_hostkey: yes
+    clone: false
+    version: main  # Replace with the desired branch or tag
+
+- name: Run Docker build
+  become: false
+  shell: |
+    cd ~/apps/aws_ec2_auto_deploy
+    npm install
+    make down
+    make up-d
