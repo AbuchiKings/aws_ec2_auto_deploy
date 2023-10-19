@@ -9,11 +9,9 @@ services:
       - /bin/sh
       - -c
       - |
-          echo "sleep for 10sec"
+          echo "sleep for 5sec"
           sleep 5
-          npm run migrate:latest
           npm run build
-          sleep 5
           ls
           npm start
 
