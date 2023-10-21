@@ -1,9 +1,9 @@
 ---
-- name: Ensure SSH agent is available
-  shell: |
-    eval $(ssh-agent)
-  become: false
-  delegate_to: localhost
+# - name: Ensure SSH agent is available
+#   shell: |
+#     eval $(ssh-agent)
+#   become: false
+#   delegate_to: localhost
 
 - name: Perform Git Pull
   become: false

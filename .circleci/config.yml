@@ -92,8 +92,8 @@ workflows:
       - test
       - setup_ansible:
           requires: [test]
-      # - deploy_server:
-      #     requires: [setup_ansible]
-      #     filters:
-      #       branches:
-      #         only: [main]
+      - deploy_server:
+          requires: [setup_ansible]
+          filters:
+            branches:
+              only: [main]
