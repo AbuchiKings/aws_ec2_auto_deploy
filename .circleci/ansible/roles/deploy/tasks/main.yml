@@ -15,8 +15,10 @@
 
 - name: Run Docker build
   become: true
-  shell: |
-    cd ~/apps/aws_ec2_auto_deploy
-    ls
-    docker-compose -f docker-compose.yml -f docker-compose.prod.yml down
-    # make up-d
+  shell: 
+    chdir: ~/apps/aws_ec2_auto_deploy
+    cmd: "{{ item }}"
+    with_items: 
+      - make down
+      - make up-d
+
