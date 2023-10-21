@@ -80,7 +80,6 @@ jobs:
       - run:
           name: Deploy Server
           command: |
-            ls -lh
             cd ~/project/.circleci/ansible
             echo "Contents  of the inventory.txt -------"
             cat inventory.txt
@@ -91,9 +90,9 @@ workflows:
     jobs:
       - test
       - setup_ansible:
-          requires: []
+          requires: [test]
       - deploy_server:
           requires: [setup_ansible]
           filters:
             branches:
-              only: [main]
+              only: [main, starter]
