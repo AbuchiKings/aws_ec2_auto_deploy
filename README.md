@@ -3,7 +3,7 @@
 #### **BASE URL** - [https://lend.abuchikings.dev](https://lend.abuchikings.dev) 
 #### **POSTMAN DOCS** - [https://documenter.getpostman.com/view/6026635/2s9YC7SrVG](https://documenter.getpostman.com/view/6026635/2s9YC7SrVG) 
 
-#### [Dev.to](https://dev.to/abuchikings/how-to-automate-your-deployments-to-aws-ec2-using-circleci-and-ansible-14f0)
+#### **How To Automate Your Deployments To AWS EC2 Using CircleCI And Ansible** - [Dev.to](https://dev.to/abuchikings/how-to-automate-your-deployments-to-aws-ec2-using-circleci-and-ansible-14f0)
 
 
 * [Technologies Used](#technologies-used)
