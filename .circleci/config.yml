@@ -89,9 +89,9 @@ jobs:
 workflows:
   default:
     jobs:
-      # - test
-      - setup_ansible
-          # requires: []
+      - test
+      - setup_ansible:
+          requires: []
       - deploy_server:
           requires: [setup_ansible]
           filters:
