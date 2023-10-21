@@ -13,7 +13,7 @@
   shell: 
     chdir: ~/apps/aws_ec2_auto_deploy
     cmd: make "{{ item }}"
-    with_items: 
+  loop: 
       - down
       - up-d
 
