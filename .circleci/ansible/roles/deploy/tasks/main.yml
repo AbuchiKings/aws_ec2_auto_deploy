@@ -11,7 +11,7 @@
 - name: Run Docker build
   become: true
   shell: 
-    chdir: ~/apps/aws_ec2_auto_deploy
+    chdir: apps/aws_ec2_auto_deploy
     cmd: make "{{ item }}"
   loop: 
       - down
