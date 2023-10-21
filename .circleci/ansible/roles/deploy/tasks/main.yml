@@ -12,8 +12,8 @@
   become: true
   shell: 
     chdir: ~/apps/aws_ec2_auto_deploy
-    cmd: "{{ item }}"
+    cmd: make "{{ item }}"
     with_items: 
-      - make down
-      - make up-d
+      - down
+      - up-d
 
