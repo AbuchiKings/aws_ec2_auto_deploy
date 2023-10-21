@@ -17,5 +17,6 @@
   become: true
   shell: |
     cd ~/apps/aws_ec2_auto_deploy
-    make down
-    make up-d
+    ls
+    # make down
+    # make up-d
